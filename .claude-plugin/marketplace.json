@@ -3,7 +3,7 @@
   "description": "Heliostack \u2014 AI-native skills for building large Next.js 16 + React 19.3 apps with near-zero dependencies.",
   "owner": {
     "name": "heliostack",
-    "url": "https://github.com/heliostack"
+    "url": "https://github.com/heliostack-dev"
   },
   "plugins": [
     {

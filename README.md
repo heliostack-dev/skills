@@ -19,7 +19,7 @@
 
 <br />
 
-Heliostack is **one coherent set of decisions**, written as [Agent Skills](https://docs.claude.com/en/docs/claude-code/skills), so an AI agent can build an app the size of X or Spotify where every generated file fits every other one. Each skill is grounded in code that runs in **[Halo](https://github.com/heliostack/halo)**, a realtime social network built with them — and corrected by what building it taught us.
+Heliostack is **one coherent set of decisions**, written as [Agent Skills](https://docs.claude.com/en/docs/claude-code/skills), so an AI agent can build an app the size of X or Spotify where every generated file fits every other one. Each skill is grounded in code that runs in **[Halo](https://github.com/heliostack-dev/halo)**, a realtime social network built with them — and corrected by what building it taught us.
 
 ## Why
 
@@ -51,7 +51,7 @@ runtime dependencies  →  next · react · react-dom · postgres · zod
 **Claude Code**
 
 ```bash
-/plugin marketplace add heliostack/skills
+/plugin marketplace add heliostack-dev/skills
 /plugin install heliostack@heliostack
 ```
 
@@ -131,9 +131,9 @@ flowchart LR
 
 ## Halo — the proof
 
-<a href="https://github.com/heliostack/halo"><img src="docs/halo-home.png" alt="Halo home timeline" width="100%" /></a>
+<a href="https://github.com/heliostack-dev/halo"><img src="docs/halo-home.png" alt="Halo home timeline" width="100%" /></a>
 
-Timelines, threads, reposts and quotes, follows, grouped notifications, DMs, search and trends, 7 themes, public by default — every page partially prerendered. Built with these skills by a lead agent plus three parallel feature agents. **[See the repo →](https://github.com/heliostack/halo)**
+Timelines, threads, reposts and quotes, follows, grouped notifications, DMs, search and trends, 7 themes, public by default — every page partially prerendered. Built with these skills by a lead agent plus three parallel feature agents. **[See the repo →](https://github.com/heliostack-dev/halo)**
 
 ## Lessons baked in
 

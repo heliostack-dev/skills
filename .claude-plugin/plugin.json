@@ -2,9 +2,9 @@
   "name": "heliostack",
   "version": "0.1.0",
   "description": "AI-native skills for building large, production-grade apps on Next.js 16 + React 19.3 with a near-zero dependency footprint: architecture, a customizable design system, Postgres data layer, auth, caching, realtime, testing and deployment.",
-  "author": { "name": "heliostack", "url": "https://github.com/heliostack" },
-  "repository": "https://github.com/heliostack/skills",
-  "homepage": "https://github.com/heliostack/skills",
+  "author": { "name": "heliostack", "url": "https://github.com/heliostack-dev" },
+  "repository": "https://github.com/heliostack-dev/skills",
+  "homepage": "https://github.com/heliostack-dev/skills",
   "license": "MIT",
   "keywords": ["nextjs", "react", "cache-components", "design-system", "postgres", "zod", "ai-native", "skills"]
 }

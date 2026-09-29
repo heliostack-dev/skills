@@ -69,7 +69,7 @@ pnpm dlx shadcn@latest build                     # build a registry from ./regis
 pnpm dlx shadcn@latest registry validate         # check it
 ```
 
-Heliostack itself may publish `@heliostack` items (post card, action button, composer) — check `https://github.com/heliostack` before re-creating them.
+Heliostack itself may publish `@heliostack` items (post card, action button, composer) — check `https://github.com/heliostack-dev` before re-creating them.
 
 ## 5. Rules that still apply
 
