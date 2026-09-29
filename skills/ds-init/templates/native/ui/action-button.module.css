@@ -1,0 +1,29 @@
+@layer reset, tokens, base, components, utilities;
+@layer components {
+  .root {
+    --_tone: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    height: var(--size-control-xs);
+    padding-inline: var(--space-2);
+    border-radius: var(--radius-full);
+    color: var(--muted-foreground);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: var(--leading-xs);
+    font-variant-numeric: tabular-nums;
+    transition: background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+  }
+  .root:hover, .root:focus-visible { color: var(--_tone); background: color-mix(in oklch, var(--_tone) 12%, transparent); }
+  .root:disabled { opacity: 0.5; cursor: not-allowed; }
+  .active { color: var(--_tone); }
+  .active .icon { animation: pop var(--duration-slow) var(--ease-emphasized); }
+  .count { min-width: 1ch; }
+
+  .reply, .bookmark, .share { --_tone: var(--primary); }
+  .repost { --_tone: var(--success); }
+  .like { --_tone: var(--like); }
+
+  @keyframes pop { 40% { scale: 1.25; } }
+}

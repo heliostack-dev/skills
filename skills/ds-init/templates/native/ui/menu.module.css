@@ -1,0 +1,50 @@
+@layer reset, tokens, base, components, utilities;
+@layer components {
+  .trigger { display: inline-flex; align-items: center; border-radius: var(--radius-full); }
+  .more { color: var(--muted-foreground); }
+  .more:hover, .more:focus-visible { color: var(--primary); background: color-mix(in oklch, var(--primary) 12%, transparent); }
+
+  .menu {
+    min-width: 13rem;
+    padding: var(--space-1);
+    border-radius: var(--radius-lg);
+    background: var(--popover);
+    color: var(--popover-foreground);
+    box-shadow: var(--shadow-lg), 0 0 0 1px var(--border);
+    opacity: 0;
+    scale: 0.96;
+    transition: opacity var(--duration-fast) var(--ease-standard), scale var(--duration-fast) var(--ease-standard),
+      overlay var(--duration-fast) allow-discrete, display var(--duration-fast) allow-discrete;
+  }
+  .menu:popover-open { opacity: 1; scale: 1; }
+  @starting-style { .menu:popover-open { opacity: 0; scale: 0.96; } }
+
+  @supports (anchor-name: --a) {
+    .menu { margin: var(--space-1) 0; position-try-fallbacks: flip-block, flip-inline; }
+    .end { position-area: block-end span-inline-start; transform-origin: top right; }
+    .start { position-area: block-end span-inline-end; transform-origin: top left; }
+  }
+  @supports not (anchor-name: --a) {
+    .menu { inset: auto 0 0 0; width: 100%; margin: 0; border-radius: var(--radius-xl) var(--radius-xl) 0 0; padding-bottom: var(--space-6); }
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    height: var(--size-control-md);
+    padding: 0 var(--space-3);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    text-align: start;
+    color: var(--popover-foreground);
+    transition: background-color var(--duration-fast) var(--ease-standard);
+  }
+  .item:hover, .item:focus-visible { background: var(--accent); outline: none; }
+  .item svg { color: var(--muted-foreground); }
+  .item[aria-disabled='true'] { opacity: 0.5; cursor: not-allowed; }
+  .danger, .danger svg { color: var(--destructive); }
+  .separator { border: 0; border-top: 1px solid var(--border); margin: var(--space-1) calc(var(--space-1) * -1); }
+}

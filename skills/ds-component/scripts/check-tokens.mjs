@@ -3,7 +3,8 @@
 //
 //   node check-tokens.mjs [--root src] [--config design-system.json]
 //
-// Flags, per line of every *.css file under --root (except the generated tokens file):
+// Requires every *.css file to start with the cascade layer order statement, then flags, per line
+// (except in the generated tokens file):
 //   raw colours     #fff, rgb(), hsl(), oklch(), named colours like `red`
 //   raw spacing     px/rem values in margin/padding/gap/inset (1px/2px hairlines are fine)
 //   raw type        font-size / line-height / font-weight not from a token
@@ -46,10 +47,17 @@ function* walk(dir) {
   }
 }
 
+const LAYER_ORDER = '@layer reset, tokens, base, components, utilities;'
+
 let problems = 0
 for (const file of walk(root)) {
-  if (tokensFile && resolve(file) === tokensFile) continue
   const lines = readFileSync(file, 'utf8').split('\n')
+  // Bundlers may load any stylesheet first, and the first layer mention fixes the cascade order.
+  if (lines[0]?.trim() !== LAYER_ORDER) {
+    problems++
+    console.log(`${relative(process.cwd(), file)}:1  missing layer order  →  first line must be: ${LAYER_ORDER}`)
+  }
+  if (tokensFile && resolve(file) === tokensFile) continue
   lines.forEach((line, i) => {
     if (line.includes('ds-allow')) return
     const m = line.match(/^\s*([a-z-]+)\s*:\s*([^;]+);?/)

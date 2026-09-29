@@ -1,0 +1,18 @@
+@layer reset, tokens, base, components, utilities;
+@layer components {
+  .avatar {
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    border-radius: var(--radius-full);
+    background: linear-gradient(135deg, oklch(70% 0.17 var(--_hue)), oklch(56% 0.2 calc(var(--_hue) + 30))); /* ds-allow: generated avatar */
+    color: oklch(99% 0 0); /* ds-allow: always on a saturated gradient */
+    font-weight: var(--weight-semibold);
+    user-select: none;
+  }
+  .xs { width: var(--space-6); height: var(--space-6); font-size: var(--text-xs); }
+  .sm { width: var(--size-avatar-sm); height: var(--size-avatar-sm); font-size: var(--text-sm); }
+  .md { width: var(--size-avatar-md); height: var(--size-avatar-md); font-size: var(--text-sm); }
+  .lg { width: var(--size-avatar-lg); height: var(--size-avatar-lg); font-size: var(--text-xl); }
+  .xl { width: calc(var(--size-avatar-lg) * 2); height: calc(var(--size-avatar-lg) * 2); font-size: var(--text-3xl); box-shadow: 0 0 0 4px var(--background); }
+}

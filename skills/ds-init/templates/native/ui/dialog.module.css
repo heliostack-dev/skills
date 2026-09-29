@@ -1,0 +1,56 @@
+@layer reset, tokens, base, components, utilities;
+@layer components {
+  .dialog {
+    margin: auto;
+    margin-top: min(10vh, var(--space-16));
+    width: min(100% - var(--space-8), var(--_width));
+    max-height: min(90dvh, 100% - var(--space-8));
+    border-radius: var(--radius-xl);
+    background: var(--popover);
+    color: var(--popover-foreground);
+    box-shadow: var(--shadow-lg);
+    overflow: auto;
+    overscroll-behavior: contain;
+    opacity: 0;
+    translate: 0 var(--space-4);
+    transition:
+      opacity var(--duration-normal) var(--ease-standard),
+      translate var(--duration-normal) var(--ease-standard),
+      overlay var(--duration-normal) allow-discrete,
+      display var(--duration-normal) allow-discrete;
+  }
+  .dialog[open] { opacity: 1; translate: 0 0; }
+  @starting-style { .dialog[open] { opacity: 0; translate: 0 var(--space-4); } }
+
+  .dialog::backdrop {
+    background: color-mix(in oklch, var(--overlay) 45%, transparent);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-standard), overlay var(--duration-normal) allow-discrete, display var(--duration-normal) allow-discrete;
+  }
+  .dialog[open]::backdrop { opacity: 1; }
+  @starting-style { .dialog[open]::backdrop { opacity: 0; } }
+
+  .sm { --_width: 24rem; }
+  .md { --_width: var(--layout-content); }
+  .lg { --_width: 50rem; }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    min-height: var(--size-control-lg);
+    padding: var(--space-2) var(--space-3);
+    background: color-mix(in oklch, var(--popover) 88%, transparent);
+    backdrop-filter: blur(12px);
+  }
+  .title { flex: 1; font-size: var(--text-lg); }
+  .action { margin-inline-start: auto; }
+  .body { padding: 0 var(--space-4) var(--space-4); }
+
+  @media (width < 40rem) {
+    .dialog { width: 100%; max-width: none; max-height: none; height: 100dvh; margin: 0; border-radius: 0; }
+  }
+}

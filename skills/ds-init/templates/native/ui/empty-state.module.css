@@ -1,0 +1,6 @@
+@layer reset, tokens, base, components, utilities;
+@layer components {
+  .root { display: grid; gap: var(--space-3); justify-items: start; max-width: 25rem; margin: var(--space-10) auto; padding: 0 var(--space-6); }
+  .title { font-size: var(--text-2xl); line-height: var(--leading-2xl); font-weight: var(--weight-bold); }
+  .body { color: var(--muted-foreground); }
+}

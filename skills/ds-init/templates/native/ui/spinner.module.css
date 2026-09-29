@@ -1,0 +1,14 @@
+@layer reset, tokens, base, components, utilities;
+@layer components {
+  .spinner {
+    display: inline-block;
+    border-radius: var(--radius-full);
+    border: 2px solid color-mix(in oklch, currentColor 25%, transparent);
+    border-top-color: currentColor;
+    animation: spin 0.7s linear infinite;
+  }
+  .sm { width: var(--space-4); height: var(--space-4); }
+  .md { width: var(--space-6); height: var(--space-6); }
+  .lg { width: var(--space-10); height: var(--space-10); }
+  @keyframes spin { to { rotate: 1turn; } }
+}

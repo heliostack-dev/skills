@@ -99,7 +99,7 @@ export const COLOR_TOKENS = [
   'background', 'foreground', 'card', 'card-foreground', 'popover', 'popover-foreground',
   'primary', 'primary-foreground', 'primary-subtle', 'secondary', 'secondary-foreground',
   'muted', 'muted-foreground', 'accent', 'accent-foreground', 'destructive', 'destructive-foreground',
-  'success', 'warning', 'border', 'input', 'ring', 'overlay',
+  'success', 'warning', 'like', 'border', 'input', 'ring', 'overlay',
 ]
 
 function derive(preset, mode) {
@@ -114,17 +114,17 @@ function derive(preset, mode) {
 
   const t = light
     ? {
-        background: N(0.992, 0.4), foreground: N(0.2), card: N(1, 0), 'card-foreground': N(0.2),
-        popover: N(1, 0), 'popover-foreground': N(0.2), secondary: N(0.955), 'secondary-foreground': N(0.24),
-        muted: N(0.965), 'muted-foreground': N(0.5), accent: N(0.945), 'accent-foreground': N(0.2),
-        border: N(0.915), input: N(0.88), success: [0.6, 0.15, 150], warning: [0.72, 0.16, 70],
+        background: N(1, 0), foreground: N(0.16), card: N(0.985, 0.4), 'card-foreground': N(0.16),
+        popover: N(1, 0), 'popover-foreground': N(0.16), secondary: N(0.96), 'secondary-foreground': N(0.2),
+        muted: N(0.967), 'muted-foreground': N(0.52), accent: N(0.955), 'accent-foreground': N(0.16),
+        border: N(0.92), input: N(0.87), success: [0.58, 0.15, 150], warning: [0.72, 0.16, 70], like: [0.6, 0.23, 8],
         'primary-subtle': [0.955, Math.min(p.chroma, 0.05), p.hue],
       }
     : {
-        background: N(0.16), foreground: N(0.965, 0.6), card: N(0.19), 'card-foreground': N(0.965, 0.6),
-        popover: N(0.215), 'popover-foreground': N(0.965, 0.6), secondary: N(0.255), 'secondary-foreground': N(0.95),
-        muted: N(0.245), 'muted-foreground': N(0.71), accent: N(0.27), 'accent-foreground': N(0.965),
-        border: N(0.3), input: N(0.34), success: [0.7, 0.15, 150], warning: [0.8, 0.15, 75],
+        background: N(0.13, 0.6), foreground: N(0.985, 0.3), card: N(0.175, 0.6), 'card-foreground': N(0.985, 0.3),
+        popover: N(0.195, 0.6), 'popover-foreground': N(0.985, 0.3), secondary: N(0.23, 0.6), 'secondary-foreground': N(0.96),
+        muted: N(0.21, 0.6), 'muted-foreground': N(0.72, 0.5), accent: N(0.22, 0.6), 'accent-foreground': N(0.985, 0.3),
+        border: N(0.28, 0.6), input: N(0.32, 0.6), success: [0.72, 0.17, 150], warning: [0.8, 0.15, 75], like: [0.66, 0.22, 8],
         'primary-subtle': [0.3, Math.min(p.chroma, 0.07), p.hue],
       }
 
@@ -142,7 +142,7 @@ export function palette(preset) {
 
 // ---------------------------------------------------------------- non-colour scales
 
-const RADIUS = { none: 0, sm: 0.25, md: 0.5, lg: 0.75, xl: 1 } // rem, base radius
+const RADIUS = { none: 0, sm: 0.375, md: 0.625, lg: 0.875, xl: 1.25 } // rem, base (= --radius-md)
 const DENSITY = { compact: 0.875, comfortable: 1, spacious: 1.125 }
 const FONT_STACKS = {
   sans: 'ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", sans-serif',
@@ -157,10 +157,11 @@ function scaleTokens(cfg) {
   // 4px grid scaled by density: --space-1 … --space-12
   ;[1, 2, 3, 4, 5, 6, 8, 10, 12, 16].forEach((n) => lines.push(`--space-${n}: ${rem(n * 0.25 * d)};`))
   lines.push(
-    `--radius-sm: ${rem(r * 0.5)};`, `--radius-md: ${rem(r)};`, `--radius-lg: ${rem(r * 1.5)};`,
+    `--radius-sm: ${rem(r * 0.6)};`, `--radius-md: ${rem(r)};`, `--radius-lg: ${rem(r * 1.4)};`,
     `--radius-xl: ${rem(r * 2)};`, '--radius-full: 9999px;',
   )
-  const type = { xs: [0.75, 1], sm: [0.875, 1.25], md: [0.9375, 1.4], lg: [1.125, 1.5], xl: [1.375, 1.6], '2xl': [1.75, 2.1], '3xl': [2.25, 2.6] }
+  // Product type scale (px): 12/16 · 14/20 · 16/24 · 18/28 · 20/28 · 24/32 · 30/36 — every line height on the 4px grid.
+  const type = { xs: [0.75, 1], sm: [0.875, 1.25], md: [1, 1.5], lg: [1.125, 1.75], xl: [1.25, 1.75], '2xl': [1.5, 2], '3xl': [1.875, 2.25] }
   for (const [k, [size, lh]] of Object.entries(type)) lines.push(`--text-${k}: ${rem(size)};`, `--leading-${k}: ${rem(lh)};`)
   lines.push(
     `--font-sans: var(--font-sans-loaded, ${FONT_STACKS.sans});`,
@@ -170,10 +171,11 @@ function scaleTokens(cfg) {
     '--shadow-md: 0 4px 12px oklch(0% 0 0 / 0.08), 0 1px 3px oklch(0% 0 0 / 0.06);',
     '--shadow-lg: 0 12px 32px oklch(0% 0 0 / 0.14), 0 2px 6px oklch(0% 0 0 / 0.08);',
     '--ease-standard: cubic-bezier(0.2, 0, 0, 1);', '--ease-emphasized: cubic-bezier(0.3, 0, 0, 1.2);',
-    '--duration-fast: 120ms;', '--duration-normal: 200ms;', '--duration-slow: 320ms;',
+    '--duration-fast: 150ms;', '--duration-normal: 200ms;', '--duration-slow: 320ms;',
     '--z-sticky: 10;', '--z-header: 20;', '--z-toast: 50;',
-    '--size-control-sm: 2rem;', '--size-control-md: 2.5rem;', '--size-control-lg: 3rem;',
-    '--layout-content: 37.5rem;', '--layout-rail: 21rem;', '--layout-nav: 17rem;',
+    '--size-control-xs: 1.75rem;', '--size-control-sm: 2rem;', '--size-control-md: 2.25rem;', '--size-control-lg: 2.75rem;',
+    '--size-avatar-sm: 2rem;', '--size-avatar-md: 2.5rem;', '--size-avatar-lg: 4rem;',
+    '--layout-content: 38rem;', '--layout-rail: 21.5rem;', '--layout-nav: 17.5rem;', '--layout-header: 3.75rem;', '--layout-tabs: 3rem;',
   )
   return lines
 }
@@ -202,6 +204,10 @@ function pick(presets, ids) {
 
 // ---------------------------------------------------------------- emitters
 
+// Cascade layer order is fixed by the FIRST stylesheet that mentions any layer, and bundlers do
+// not guarantee base.css loads first. So every CSS file in the project starts with this line.
+export const LAYER_ORDER = '@layer reset, tokens, base, components, utilities;'
+
 function emitNative(cfg, themes) {
   const [first] = themes
   const block = (p) => {
@@ -209,7 +215,8 @@ function emitNative(cfg, themes) {
     return COLOR_TOKENS.map((k) => `    --${k}: light-dark(${css(light[k])}, ${css(dark[k])});`).join('\n')
   }
   const scheme = cfg.colorScheme ?? 'system'
-  return `/* Generated by heliostack ds-init — do not edit by hand.
+  return `${LAYER_ORDER}
+/* Generated by heliostack ds-init — do not edit by hand.
  * Source: design-system.json. Regenerate: node <ds-init>/scripts/theme.mjs generate
  * Themes: ${themes.map((t) => t.id).join(', ')} · default: ${first.id} · scheme: ${scheme}
  */

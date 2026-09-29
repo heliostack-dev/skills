@@ -1,0 +1,42 @@
+@layer reset, tokens, base, components, utilities;
+@layer components {
+  .button {
+    --_bg: transparent;
+    --_fg: var(--foreground);
+    --_border: transparent;
+    --_hover: color-mix(in oklch, var(--_bg), var(--foreground) 10%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--_border);
+    background: var(--_bg);
+    color: var(--_fg);
+    font-weight: var(--weight-semibold);
+    font-size: var(--text-sm);
+    line-height: var(--leading-sm);
+    white-space: nowrap;
+    user-select: none;
+    transition: background-color var(--duration-fast) var(--ease-standard), scale var(--duration-fast) var(--ease-standard);
+  }
+  .button:hover:not(:disabled) { background: var(--_hover); }
+  .button:active:not(:disabled) { scale: 0.98; }
+  .button:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+  .button:disabled { opacity: 0.55; cursor: not-allowed; }
+  .button[aria-busy='true'] { cursor: progress; opacity: 1; }
+  .button[aria-busy='true'] .label { opacity: 0.6; }
+
+  .primary { --_bg: var(--primary); --_fg: var(--primary-foreground); }
+  .primary:hover:not(:disabled) { --_hover: color-mix(in oklch, var(--primary), var(--foreground) 12%); }
+  .inverted { --_bg: var(--foreground); --_fg: var(--background); --_hover: color-mix(in oklch, var(--foreground), var(--background) 15%); }
+  .secondary { --_bg: var(--secondary); --_fg: var(--secondary-foreground); }
+  .outline { --_border: var(--border); --_hover: var(--accent); }
+  .ghost { --_hover: var(--accent); }
+  .danger { --_bg: var(--destructive); --_fg: var(--destructive-foreground); }
+
+  .sm { height: var(--size-control-sm); padding-inline: var(--space-4); }
+  .md { height: var(--size-control-md); padding-inline: var(--space-5); }
+  .lg { height: var(--size-control-lg); padding-inline: var(--space-6); font-size: var(--text-md); line-height: var(--leading-md); }
+  .block { display: flex; width: 100%; }
+}

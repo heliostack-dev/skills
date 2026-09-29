@@ -1,0 +1,10 @@
+{
+  "id": "halo",
+  "label": "Halo",
+  "description": "Electric blue on true-neutral greys with a pure-black dark mode. Crisp and product-grade.",
+  "neutral": { "hue": 260, "chroma": 0.003 },
+  "primary": { "hue": 264, "chroma": 0.25, "light": 0.53, "dark": 0.6 },
+  "overrides": {
+    "dark": { "background": [0, 0, 0], "card": [0.17, 0, 0], "popover": [0.19, 0, 0], "muted": [0.2, 0, 0], "accent": [0.21, 0, 0], "border": [0.27, 0, 0] }
+  }
+}

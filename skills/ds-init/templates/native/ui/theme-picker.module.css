@@ -1,0 +1,28 @@
+@layer reset, tokens, base, components, utilities;
+@layer components {
+  .root { display: grid; gap: var(--space-5); }
+  .group { border: 0; padding: 0; min-width: 0; display: grid; gap: var(--space-2); }
+  .legend { padding: 0; margin-bottom: var(--space-2); color: var(--muted-foreground); font-size: var(--text-xs); line-height: var(--leading-xs); font-weight: var(--weight-medium); }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr)); gap: var(--space-2); }
+  .swatch {
+    display: grid; justify-items: center; gap: var(--space-2);
+    padding: var(--space-3) var(--space-2); border-radius: var(--radius-md); border: 1px solid var(--border);
+    background: var(--background); color: var(--foreground); cursor: pointer; text-transform: capitalize;
+    transition: border-color var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard);
+  }
+  .swatch:hover { background: var(--accent); }
+  .swatch:has(:checked) { border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary); }
+  .swatch:has(:focus-visible) { outline: 2px solid var(--ring); outline-offset: 2px; }
+  .dot { width: var(--space-6); height: var(--space-6); border-radius: var(--radius-full); background: var(--primary); }
+  .name { font-size: var(--text-xs); line-height: var(--leading-xs); font-weight: var(--weight-medium); }
+  .schemes { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); }
+  .scheme {
+    display: flex; align-items: center; justify-content: center; gap: var(--space-2);
+    height: var(--size-control-lg); padding: 0 var(--space-3); border-radius: var(--radius-md); border: 1px solid var(--border); cursor: pointer;
+    font-size: var(--text-sm); line-height: var(--leading-sm); font-weight: var(--weight-semibold);
+    transition: border-color var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard);
+  }
+  .scheme:hover { background: var(--accent); }
+  .scheme:has(:checked) { border-color: var(--primary); background: var(--primary-subtle); }
+  .scheme:has(:focus-visible) { outline: 2px solid var(--ring); outline-offset: 2px; }
+}

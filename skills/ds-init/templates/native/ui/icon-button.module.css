@@ -1,0 +1,18 @@
+@layer reset, tokens, base, components, utilities;
+@layer components {
+  .root {
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    border-radius: var(--radius-full);
+    color: var(--foreground);
+    transition: background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+  }
+  .root:hover { background: var(--accent); }
+  .root:active { background: color-mix(in oklch, var(--accent), var(--foreground) 8%); }
+  .root:disabled { opacity: 0.5; cursor: not-allowed; background: none; }
+  .outline { border: 1px solid var(--border); }
+  .sm { width: var(--size-control-sm); height: var(--size-control-sm); }
+  .md { width: var(--size-control-md); height: var(--size-control-md); }
+  .lg { width: var(--size-control-lg); height: var(--size-control-lg); }
+}

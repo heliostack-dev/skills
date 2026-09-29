@@ -1,0 +1,13 @@
+@layer reset, tokens, base, components, utilities;
+@layer components {
+  .skeleton {
+    display: block;
+    height: var(--space-4);
+    border-radius: var(--radius-sm);
+    background: linear-gradient(90deg, var(--muted) 25%, var(--accent) 50%, var(--muted) 75%);
+    background-size: 300% 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+  }
+  .round { border-radius: var(--radius-full); }
+  @keyframes shimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
+}
