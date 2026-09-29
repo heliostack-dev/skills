@@ -131,9 +131,9 @@ flowchart LR
 
 ## Halo — the proof
 
-<a href="https://github.com/heliostack-dev/halo"><img src="docs/halo-home.png" alt="Halo home timeline" width="100%" /></a>
+<a href="https://heliostack-halo.vercel.app"><img src="docs/halo-home.png" alt="Halo home timeline" width="100%" /></a>
 
-Timelines, threads, reposts and quotes, follows, grouped notifications, DMs, search and trends, 7 themes, public by default — every page partially prerendered. Built with these skills by a lead agent plus three parallel feature agents. **[See the repo →](https://github.com/heliostack-dev/halo)**
+Timelines, threads, reposts and quotes, follows, grouped notifications, DMs, search and trends, 7 themes, public by default — every page partially prerendered. Built with these skills by a lead agent plus three parallel feature agents. **[Live demo →](https://heliostack-halo.vercel.app)** &nbsp;·&nbsp; **[Source →](https://github.com/heliostack-dev/halo)**
 
 ## Lessons baked in
 
