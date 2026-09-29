@@ -53,16 +53,19 @@ export async function deletePostAction(postId: string) {
 ## proxy.ts (Next 16's middleware)
 
 ```ts
-const PRIVATE = ['/home', '/notifications', '/messages', '/bookmarks', '/settings', '/compose']
+// Public by default: the timeline, profiles, posts and search are readable signed-out.
+const PRIVATE = ['/home/following', '/notifications', '/messages', '/bookmarks', '/settings', '/compose']
 export function proxy(request: NextRequest) {
   const has = request.cookies.has(SESSION_COOKIE)
   if (!has && PRIVATE.some((p) => pathname === p || pathname.startsWith(`${p}/`))) → redirect `/login?next=…`
-  if (has && ['/', '/login', '/signup'].includes(pathname)) → redirect '/home'
+  if (has && ['/login', '/signup'].includes(pathname)) → redirect '/home'
 }
 export const config = { matcher: ['/((?!api|_next/static|_next/image|icons.svg|favicon.ico).*)'] }
 ```
 
 Presence check only — no DB, no crypto. It's a UX shortcut; the page/action still authorises.
+
+**Prefer public-by-default over a landing page.** A marketing splash in front of the product reads as filler; let visitors land on real content (`redirects: [{ source: '/', destination: '/home', permanent: false }]` in `next.config.ts`) and invite them with a slim signup bar (streamed in its own Suspense boundary, rendered only when `getViewer()` is null). Components that need a viewer must degrade: hide the composer, send interaction attempts to `/login`.
 
 ## Tests
 
