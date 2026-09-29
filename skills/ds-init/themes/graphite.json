@@ -1,0 +1,10 @@
+{
+  "id": "graphite",
+  "label": "Graphite",
+  "description": "Pure monochrome with a true-black dark mode. Content-first, OLED-friendly.",
+  "neutral": { "hue": 0, "chroma": 0 },
+  "primary": { "hue": 0, "chroma": 0, "light": 0.2, "dark": 0.95 },
+  "overrides": {
+    "dark": { "background": [0, 0, 0], "card": [0.13, 0, 0], "popover": [0.16, 0, 0] }
+  }
+}

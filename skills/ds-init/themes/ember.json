@@ -1,0 +1,7 @@
+{
+  "id": "ember",
+  "label": "Ember",
+  "description": "Rose-red on warm charcoal. Bold, expressive, creator-focused.",
+  "neutral": { "hue": 20, "chroma": 0.008 },
+  "primary": { "hue": 12, "chroma": 0.19, "light": 0.58, "dark": 0.68 }
+}

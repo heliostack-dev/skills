@@ -1,0 +1,12 @@
+{
+  "name": "heliostack",
+  "owner": { "name": "heliostack", "url": "https://github.com/heliostack" },
+  "plugins": [
+    {
+      "name": "heliostack",
+      "source": "./",
+      "description": "AI-native skills for large Next.js 16 + React 19.3 apps with minimal third-party dependencies.",
+      "version": "0.1.0"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "verdant",
+  "label": "Verdant",
+  "description": "Fresh green on stone. Media and music apps, playful but grown-up.",
+  "neutral": { "hue": 150, "chroma": 0.008 },
+  "primary": { "hue": 150, "chroma": 0.17, "light": 0.58, "dark": 0.74 }
+}

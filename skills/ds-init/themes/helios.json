@@ -1,0 +1,7 @@
+{
+  "id": "helios",
+  "label": "Helios",
+  "description": "Solar amber on warm sand neutrals. Energetic, editorial.",
+  "neutral": { "hue": 70, "chroma": 0.010 },
+  "primary": { "hue": 55, "chroma": 0.18, "light": 0.66, "dark": 0.76 }
+}

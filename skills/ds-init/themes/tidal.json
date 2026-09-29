@@ -1,0 +1,7 @@
+{
+  "id": "tidal",
+  "label": "Tidal",
+  "description": "Social blue on crisp neutral grey. Familiar, trustworthy, timeline-friendly.",
+  "neutral": { "hue": 240, "chroma": 0.006 },
+  "primary": { "hue": 245, "chroma": 0.17, "light": 0.60, "dark": 0.68 }
+}

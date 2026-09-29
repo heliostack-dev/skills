@@ -1,0 +1,7 @@
+{
+  "id": "nocturne",
+  "label": "Nocturne",
+  "description": "Electric indigo on cool slate. Calm, focused, great for dark mode.",
+  "neutral": { "hue": 270, "chroma": 0.012 },
+  "primary": { "hue": 275, "chroma": 0.20, "light": 0.55, "dark": 0.70 }
+}
